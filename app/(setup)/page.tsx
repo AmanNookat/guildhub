@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { initialProfile } from "@/lib/initial-profile";
+import { InitialModal } from "@/components/modals/initial-modal";
 // import { InitialModal } from "@/components/modals/initial-modal";
 
 const SetupPage = async () => {
@@ -21,14 +22,8 @@ const SetupPage = async () => {
     return redirect(`/servers/${server.id}`);
   }
 
-  //   return <InitialModal />;
-  return <div>Create</div>;
+  return <InitialModal />;
+  //   return <div>Create</div>;
 };
 
 export default SetupPage;
-
-// const SetupPage = () => {
-//   return <div>Create</div>;
-// };
-
-// export default SetupPage;
