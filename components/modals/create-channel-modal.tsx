@@ -26,13 +26,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useParams, useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useEffect } from "react";
 
 const formSchema = z.object({
@@ -133,7 +133,7 @@ export const CreateChannelModal = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Channel Type</FormLabel>
-                    {/* <Select
+                    <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
                       defaultValue={field.value}
@@ -154,7 +154,7 @@ export const CreateChannelModal = () => {
                           </SelectItem>
                         ))}
                       </SelectContent>
-                    </Select> */}
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
