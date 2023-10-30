@@ -25,6 +25,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/hooks/use-modal-store";
+import ChatLike from "./chat-like";
 
 interface ChatItemProps {
   id: string;
@@ -235,11 +236,7 @@ export const ChatItem = ({
         </div>
       </div>
       <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-5 bg-white dark:bg-zinc-800 border rounded-sm">
-        {
-          <ActionTooltip label="1">
-            <Heart className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
-          </ActionTooltip>
-        }
+        {<ChatLike />}
       </div>
       {canDeleteMessage && (
         <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-10 bg-white dark:bg-zinc-800 border rounded-sm">
