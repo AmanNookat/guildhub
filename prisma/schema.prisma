@@ -60,6 +60,8 @@ model Member {
   messages Message[]
   directMessages DirectMessage[]
 
+  likesMade Like[]
+
   conversationsInitiated Conversation[] @relation("MemberOne")
   conversationsReceived Conversation[] @relation("MemberTwo")
 
@@ -108,6 +110,8 @@ model Message {
   channelId String
   channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
 
+  likes Like[]
+
   deleted Boolean @default(false)
 
   createdAt DateTime @default(now())
@@ -151,4 +155,19 @@ model DirectMessage {
 
   @@index([memberId])
   @@index([conversationId])
+}
+
+model Like {
+  id String  @id @default(uuid())
+
+  ownerId String
+  owner Member @relation(fields: [ownerId], references: [id])
+
+  messageId String
+  message Message @relation(fields: [messageId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([messageId]) 
+  @@index([ownerId]) 
 }
