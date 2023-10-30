@@ -1,7 +1,7 @@
 "use client";
 
 import { ChannelType, MemberRole } from "@prisma/client";
-import { Plus, Settings } from "lucide-react";
+import { List, Plus, Settings } from "lucide-react";
 
 import { ServerWithMembersWithProfiles } from "@/types";
 import { ActionTooltip } from "@/components/action-tooltip";
@@ -39,13 +39,13 @@ export const ServerSection = ({
           </button>
         </ActionTooltip>
       )}
-      {role === MemberRole.ADMIN && sectionType === "members" && (
-        <ActionTooltip label="Manage Members" side="top">
+      {sectionType === "members" && (
+        <ActionTooltip label="Users List" side="top">
           <button
-            onClick={() => onOpen("members", { server })}
+            onClick={() => onOpen("membersTable", { server })}
             className="text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
           >
-            <Settings className="h-4 w-4" />
+            <List className="h-4 w-4" />
           </button>
         </ActionTooltip>
       )}
