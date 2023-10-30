@@ -146,15 +146,6 @@ export function MembersTable({ server }: ServerProps) {
   return (
     <div>
       <div className="flex items-center">
-        {/* <Input
-          placeholder="Filter roles..."
-          value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("role")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        /> */}
-
         <select
           className="bg-white text-black"
           value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
