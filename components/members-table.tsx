@@ -42,77 +42,23 @@ import { ScrollArea } from "@radix-ui/react-scroll-area";
 const data: User[] = [
   {
     id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
+    servers: 316,
+    username: "success",
+    role: "ken99@yahoo.com",
   },
   {
     id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
+    servers: 242,
+    username: "success",
+    role: "Abe45@gmail.com",
   },
 ];
 
 export type User = {
   id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
+  servers: number;
+  username: string;
+  role: string;
 };
 
 export const columns: ColumnDef<User>[] = [
@@ -122,23 +68,23 @@ export const columns: ColumnDef<User>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
+    accessorKey: "username",
     header: "Username",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("username")}</div>
     ),
   },
   {
-    accessorKey: "email",
+    accessorKey: "role",
     header: ({ column }) => {
       return <div className="text-center">Role</div>;
     },
     cell: ({ row }) => (
-      <div className="lowercase text-center">{row.getValue("email")}</div>
+      <div className="lowercase text-center">{row.getValue("role")}</div>
     ),
   },
   {
-    accessorKey: "amount",
+    accessorKey: "servers",
     header: ({ column }) => {
       return (
         <div className="text-center">
@@ -153,9 +99,9 @@ export const columns: ColumnDef<User>[] = [
       );
     },
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const servers = parseFloat(row.getValue("servers"));
 
-      return <div className="text-center">{amount}</div>;
+      return <div className="text-center">{servers}</div>;
     },
   },
 ];
@@ -195,10 +141,10 @@ export function MembersTable() {
     <div>
       <div className="flex items-center">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter roles..."
+          value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("role")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
