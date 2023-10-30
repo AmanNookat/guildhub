@@ -7,6 +7,7 @@ import {
   LogOut,
   PlusCircle,
   Settings,
+  Star,
   Trash,
   UserPlus,
   Users,
@@ -41,6 +42,13 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 text-xs font-medium text-black dark:text-neutral-400 space-y-[2px]">
+        <DropdownMenuItem
+          onClick={() => onOpen("paymentForm", { server })}
+          className="text-red-600 dark:text-yellow-400 px-3 py-2 text-sm cursor-pointer"
+        >
+          Premium
+          <Star className="h-4 w-4 ml-auto" />
+        </DropdownMenuItem>
         {isModerator && (
           <DropdownMenuItem
             onClick={() => onOpen("invite", { server })}
