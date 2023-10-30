@@ -122,10 +122,11 @@ export const MembersTableModal = () => {
       setLoadingId("");
     }
   };
+
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent className="bg-white text-black overflow-hidden">
-        <MembersTable />
+        <MembersTable server={server} />
       </DialogContent>
     </Dialog>
   );

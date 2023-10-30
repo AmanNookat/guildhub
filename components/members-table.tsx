@@ -39,26 +39,27 @@ import { useRouter } from "next/navigation";
 import { Dialog, DialogContent } from "@radix-ui/react-dialog";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 
-const data: User[] = [
-  {
-    id: "m5gr84i9",
-    servers: 316,
-    username: "success",
-    role: "ken99@yahoo.com",
-  },
-  {
-    id: "3u1reuv4",
-    servers: 242,
-    username: "success",
-    role: "Abe45@gmail.com",
-  },
-];
+// const data: User[] = [
+//   {
+//     id: "m5gr84i9",
+//     servers: 316,
+//     username: "success",
+//     role: "ken99@yahoo.com",
+//   },
+//   {
+//     id: "3u1reuv4",
+//     servers: 242,
+//     username: "success",
+//     role: "Abe45@gmail.com",
+//   },
+// ];
 
 export type User = {
   id: string;
   servers: number;
   username: string;
   role: string;
+  profile: any;
 };
 
 export const columns: ColumnDef<User>[] = [
@@ -70,15 +71,14 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "username",
     header: "Username",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("username")}</div>
-    ),
+    cell: ({ row }) => {
+      const username = row.original.profile.name;
+      return <div className="capitalize">{username}</div>;
+    },
   },
   {
     accessorKey: "role",
-    header: ({ column }) => {
-      return <div className="text-center">Role</div>;
-    },
+    header: "Role",
     cell: ({ row }) => (
       <div className="lowercase text-center">{row.getValue("role")}</div>
     ),
@@ -99,14 +99,18 @@ export const columns: ColumnDef<User>[] = [
       );
     },
     cell: ({ row }) => {
-      const servers = parseFloat(row.getValue("servers"));
+      const username = row.original.profile.email.length;
 
-      return <div className="text-center">{servers}</div>;
+      return <div className="text-center">{username}</div>;
     },
   },
 ];
 
-export function MembersTable() {
+interface ServerProps {
+  server: any;
+}
+
+export function MembersTable({ server }: ServerProps) {
   const router = useRouter();
   const [loadingId, setLoadingId] = React.useState("");
 
@@ -117,6 +121,8 @@ export function MembersTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+
+  const data = server?.members;
 
   const table = useReactTable({
     data,
@@ -140,14 +146,27 @@ export function MembersTable() {
   return (
     <div>
       <div className="flex items-center">
-        <Input
+        {/* <Input
           placeholder="Filter roles..."
           value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("role")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
-        />
+        /> */}
+
+        <select
+          className="bg-white text-black"
+          value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("role")?.setFilterValue(event.target.value)
+          }
+        >
+          <option value="">all</option>
+          <option value="admin">admin</option>
+          <option value="moderator">moderator</option>
+          <option value="guest">guest</option>
+        </select>
         <DropdownMenu>
           <DropdownMenuContent align="end">
             {table

@@ -74,8 +74,6 @@ export const MembersModal = () => {
     }
   };
 
-  console.log(server?.members);
-
   const onRoleChange = async (memberId: string, role: MemberRole) => {
     try {
       setLoadingId(memberId);
