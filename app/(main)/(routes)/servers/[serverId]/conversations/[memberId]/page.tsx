@@ -80,6 +80,7 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
             socketQuery={{
               conversationId: conversation.id,
             }}
+            profileId={profile.id}
           />
           <ChatInput
             name={otherMember.profile.name}

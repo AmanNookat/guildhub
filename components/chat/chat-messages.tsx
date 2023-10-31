@@ -30,6 +30,7 @@ interface ChatMessagesProps {
   paramKey: "channelId" | "conversationId";
   paramValue: string;
   type: "channel" | "conversation";
+  profileId: string;
 }
 
 export const ChatMessages = ({
@@ -42,6 +43,7 @@ export const ChatMessages = ({
   paramKey,
   paramValue,
   type,
+  profileId,
 }: ChatMessagesProps) => {
   const queryKey = `chat:${chatId}`;
   const addKey = `chat:${chatId}:messages`;
@@ -125,6 +127,7 @@ export const ChatMessages = ({
                 isUpdated={message.updatedAt !== message.createdAt}
                 socketUrl={socketUrl}
                 socketQuery={socketQuery}
+                profileId={profileId}
               />
             ))}
           </Fragment>
