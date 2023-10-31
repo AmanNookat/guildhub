@@ -40,6 +40,7 @@ interface ChatItemProps {
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
+  profileId: string;
 }
 
 const roleIconMap = {
@@ -63,6 +64,7 @@ export const ChatItem = ({
   isUpdated,
   socketUrl,
   socketQuery,
+  profileId,
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const { onOpen } = useModal();
@@ -236,7 +238,7 @@ export const ChatItem = ({
         </div>
       </div>
       <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-5 bg-white dark:bg-zinc-800 border rounded-sm">
-        {<ChatLike />}
+        {<ChatLike messageId={id} profileId={profileId} />}
       </div>
       {canDeleteMessage && (
         <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-10 bg-white dark:bg-zinc-800 border rounded-sm">
