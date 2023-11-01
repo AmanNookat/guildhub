@@ -74,8 +74,6 @@ export const columns: ColumnDef<User>[] = [
       );
     },
     cell: ({ row }) => {
-      console.log(row);
-
       return <div className="text-center">{row.getValue("nRate")}</div>;
     },
   },
