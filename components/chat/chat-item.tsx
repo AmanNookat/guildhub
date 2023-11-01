@@ -250,6 +250,7 @@ export const ChatItem = ({
           content={content}
           member={member}
           profileId={profileId}
+          timestamp={timestamp}
         />
       </div>
 

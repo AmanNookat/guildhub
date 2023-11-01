@@ -7,13 +7,15 @@ interface ChatFavoriteProps {
   content?: string;
   member?: any;
   profileId?: string;
+  timestamp?: string;
 }
 
-const toggleFavorite = async ({
+export const toggleFavorite = async ({
   messageId,
   content,
   member,
   profileId,
+  timestamp,
 }: ChatFavoriteProps) => {
   const storedValue = localStorage.getItem("disFav");
   const isFav = storedValue ? JSON.parse(storedValue) : [];
@@ -26,6 +28,7 @@ const toggleFavorite = async ({
       content: content,
       member: member,
       profileId: profileId,
+      timestamp: timestamp,
     };
     isFav.push(favMessage);
     localStorage.setItem("disFav", JSON.stringify(isFav));
@@ -52,6 +55,7 @@ const ChatFavorite = ({
   content,
   member,
   profileId,
+  timestamp,
 }: ChatFavoriteProps) => {
   const [prikol, setPrikol] = useState(false);
   const [isFavMess, setIsFavMess] = useState(false);
@@ -67,7 +71,13 @@ const ChatFavorite = ({
       >
         <Star
           onClick={() => {
-            toggleFavorite({ messageId, content, member, profileId });
+            toggleFavorite({
+              messageId,
+              content,
+              member,
+              profileId,
+              timestamp,
+            });
             setPrikol(!prikol);
           }}
           className={`cursor-pointer ml-auto w-4 h-4 ${

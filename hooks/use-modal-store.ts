@@ -14,7 +14,8 @@ export type ModalType =
   | "messageFile"
   | "deleteMessage"
   | "membersTable"
-  | "paymentForm";
+  | "paymentForm"
+  | "favoritesMessages";
 
 interface ModalData {
   server?: Server;
