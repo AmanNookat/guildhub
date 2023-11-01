@@ -12,6 +12,7 @@ import {
   Heart,
   ShieldAlert,
   ShieldCheck,
+  Star,
   Trash,
 } from "lucide-react";
 import Image from "next/image";
@@ -26,6 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/hooks/use-modal-store";
 import ChatLike from "./chat-like";
+import ChatFavorite from "./chat-favorite";
 
 interface ChatItemProps {
   id: string;
@@ -242,8 +244,17 @@ export const ChatItem = ({
         <ChatLike messageId={id} profileId={profileId} />
       </div>
 
+      <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-14 bg-white dark:bg-zinc-800 border rounded-sm">
+        <ChatFavorite
+          messageId={id}
+          content={content}
+          member={member}
+          profileId={profileId}
+        />
+      </div>
+
       {canDeleteMessage && (
-        <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-14 bg-white dark:bg-zinc-800 border rounded-sm">
+        <div className="hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-20 bg-white dark:bg-zinc-800 border rounded-sm">
           {canEditMessage && (
             <ActionTooltip label="Edit">
               <Edit
