@@ -88,7 +88,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
           <ServerSearch
             data={[
               {
-                label: "Text1 Channels",
+                label: "Text Channels",
                 type: "channel",
                 data: textChannels?.map((channel) => ({
                   id: channel.id,
@@ -133,7 +133,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               sectionType="channels"
               channelType={ChannelType.TEXT}
               role={role}
-              label="Text1 Channels"
+              label="Text Channels"
             />
             <div className="space-y-[2px]">
               {textChannels.map((channel) => (

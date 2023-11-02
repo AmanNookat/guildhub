@@ -9,6 +9,7 @@ import { db } from "@/lib/db";
 
 import { NavigationAction } from "./navigation-action";
 import { NavigationItem } from "./navigation-item";
+import LangSwitch from "../lang-switch";
 
 export const NavigationSidebar = async () => {
   const profile = await currentProfile();
@@ -44,6 +45,7 @@ export const NavigationSidebar = async () => {
         ))}
       </ScrollArea>
       <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
+        {/* <LangSwitch /> */}
         <ModeToggle />
         <UserButton
           afterSignOutUrl="/"
