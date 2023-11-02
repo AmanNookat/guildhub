@@ -11,10 +11,6 @@ const nextConfig = {
   images: {
     domains: ["uploadthing.com", "utfs.io"],
   },
-  i18n: {
-    locales: ["en", "ru"],
-    defaultLocale: "en",
-  },
 };
 
 module.exports = nextConfig;
