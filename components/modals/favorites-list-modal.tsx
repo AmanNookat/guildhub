@@ -66,7 +66,9 @@ export const FavoritesModal = () => {
               </div>
             ))
           ) : (
-            <DialogTitle>No favorites</DialogTitle>
+            <DialogTitle className="flex justify-center">
+              No favorites
+            </DialogTitle>
           )}
         </ScrollArea>
       </DialogContent>
