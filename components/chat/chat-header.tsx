@@ -28,7 +28,7 @@ export const ChatHeader = ({
         <UserAvatar src={imageUrl} className="h-8 w-8 md:h-8 md:w-8 mr-2" />
       )}
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
-      <div className="text-center w-full font-bold text-3xl text-gray-800">
+      <div className="text-center w-full font-bold text-3xl text-gray-900 dark:text-white">
         REDUX JOB
       </div>
       <div className="ml-auto flex items-center">
