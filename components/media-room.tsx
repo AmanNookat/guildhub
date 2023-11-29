@@ -53,6 +53,21 @@ export const MediaRoom = ({ chatId, video, audio }: MediaRoomProps) => {
       video={video}
       audio={audio}
     >
+      <p
+        style={{
+          position: "absolute",
+          zIndex: "50",
+          top: "50%",
+          right: "140px",
+          width: "50%",
+          height: "auto",
+          fontSize: "50px",
+          fontWeight: "900",
+          opacity: "50%",
+        }}
+      >
+        REDUX JOB
+      </p>
       <VideoConference />
     </LiveKitRoom>
   );
